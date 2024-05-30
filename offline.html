@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="manifest" href="assets/manifest.json" />    
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="assets/static/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/idb@6.1.3/build/iife/index-min.js"></script> <!-- Ajout de la bibliothèque idb -->
+    <script>
+      // Gestionnaire d'événements pour la soumission du formulaire
+      document.querySelector('form').addEventListener('submit', async (event) => {
+        event.preventDefault(); // empecher l'action par defaut de l'evenement submit du formulaire qui est de recharger la page
+
+        // Stocker les données du formulaire dans IndexedDB
+        const db = await idb.openDB('myDB', 1, {
+          upgrade(db) {
+            db.createObjectStore('offlineData');
+          },
+        });
+
+        // lire ou modifier les donnees dans la base de donnees
+        const tx = db.transaction('offlineData', 'readwrite');
+
+        // ajouter les donnees issues du formulaire a l'objet store
+        await tx.store.add({
+          data: new FormData(event.target),
+        });
+
+        // attendre la fin de l'insertion des donnees dans la BD avant de continuer
+        await tx.done;
+
+        console.log('Data stored offline in IndexedDB');
+      });
+    </script>
+    <title>Test of PWA</title>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div style="text-align: center; display: flex; justify-content: center; align-items: center;" class="container-fluid">
+      <a class="navbar-brand" href="#">Test of PWA : Offline</a>
+    </div>
+  </nav>
+  <div class="centered-form"">
+    <form action="user.php" method="POST">
+      <div class="form-group">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" class="form-control"><br>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" class="form-control"><br><br>
+      </div>
+      <input type="submit" value="Create user" class="btn btn-primary">
+    </form>
+  </div>
+</body>
+</html>
