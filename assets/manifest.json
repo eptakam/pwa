@@ -1,5 +1,5 @@
 {
-  "name": "Essaie PWA",
+  "name": "Test of PWA",
   "icons": [
     {
       "src": "icons/challenges_512.png",
@@ -12,6 +12,6 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "../testpwa.html?source=pwa",
+  "start_url": "../index.html?source=pwa",
   "display": "standalone"
 }

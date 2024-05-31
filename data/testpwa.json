@@ -1,0 +1,28 @@
+[
+  {"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+  {"type":"database","name":"testpwa"},
+  {"type":"table","name":"user","database":"testpwa","data":
+  [
+  {"userID":"1","username":"emmataks","password":"1234"},
+  {"userID":"2","username":"admin","password":"root"},
+  {"userID":"3","username":"admin","password":"root"},
+  {"userID":"4","username":"emma","password":"emma"},
+  {"userID":"5","username":"emma","password":"emma"},
+  {"userID":"6","username":"offline","password":"1234"},
+  {"userID":"7","username":"patrick","password":"4567"},
+  {"userID":"8","username":"patrick","password":"offline"},
+  {"userID":"9","username":"claire","password":"1234"},
+  {"userID":"10","username":"codeur","password":"8907"},
+  {"userID":"11","username":"codepur","password":"qw54"},
+  {"userID":"12","username":"ghjk","password":"56rt"},
+  {"userID":"13","username":"lecodeur","password":"12er"},
+  {"userID":"14","username":"lecodeur","password":"12er"},
+  {"userID":"15","username":"lecodeur","password":"12er"},
+  {"userID":"16","username":"lecodeur","password":"12er"},
+  {"userID":"17","username":"emmataks","password":"6788"},
+  {"userID":"18","username":"josh","password":"1234"},
+  {"userID":"19","username":"josh","password":"1234"},
+  {"userID":"20","username":"josh","password":"offline"}
+  ]
+  }
+  ]
